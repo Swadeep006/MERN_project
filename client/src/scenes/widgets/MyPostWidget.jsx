@@ -32,7 +32,7 @@ const MyPostWidget = ({ picturePath }) => {
   const [post, setPost] = useState("");
   const { palette } = useTheme();
   const { _id } = useSelector((state) => state.user);
-  const { token } = useSelector((state) => state.token);
+  const token = useSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   const mediumMain = palette.neutral.mediumMain;
   const medium = palette.neutral.medium;
@@ -46,7 +46,7 @@ const MyPostWidget = ({ picturePath }) => {
       formData.append("picturePath", image.name);
     }
 
-    const response = await fetch(`https://localhost:3001/posts`, {
+    const response = await fetch(`http://localhost:3001/posts`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
@@ -118,14 +118,14 @@ const MyPostWidget = ({ picturePath }) => {
         </Box>
       )}
 
-      <Divider sx={{ margin: "1.25rem 0 " }} />
+      <Divider sx={{ margin: "1.25rem 0" }} />
 
       <FlexBetween>
         <FlexBetween gap="0.25rem" onClick={() => setIsImage(!isImage)}>
           <ImageOutlined sx={{ color: mediumMain }} />
           <Typography
             color={mediumMain}
-            sx={{ "&:hover": { cursor: "pointer", clor: medium } }}
+            sx={{ "&:hover": { cursor: "pointer", color: medium } }}
           >
             Image
           </Typography>
@@ -137,11 +137,13 @@ const MyPostWidget = ({ picturePath }) => {
               <Typography color={mediumMain}>Clip</Typography>
             </FlexBetween>
             <FlexBetween gap="0.25rem">
-              <GifBoxOutlined sx={{ color: mediumMain, cursor: "pointer" }} />
+              <AttachFileOutlined
+                sx={{ color: mediumMain, cursor: "pointer" }}
+              />
               <Typography color={mediumMain}>Attachment</Typography>
             </FlexBetween>
             <FlexBetween gap="0.25rem">
-              <GifBoxOutlined sx={{ color: mediumMain, cursor: "pointer" }} />
+              <MicOutlined sx={{ color: mediumMain, cursor: "pointer" }} />
               <Typography color={mediumMain}>Audio</Typography>
             </FlexBetween>
           </>
