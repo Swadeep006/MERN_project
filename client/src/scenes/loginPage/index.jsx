@@ -1,7 +1,7 @@
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import Form from "./Form";
 
-const Login = () => {
+const LoginPage = () => {
   const theme = useTheme();
   const isNonMobileScreens = useMediaQuery("(min-width : 1000px)");
   return (
@@ -10,6 +10,7 @@ const Login = () => {
         width="100%"
         backgroundColor={theme.palette.background.alt}
         p="1rem 6%"
+        textAlign="center"
       >
         <Typography fontWeight="bold" fontSize="32px" color="primary">
           Sociopedia
@@ -30,4 +31,4 @@ const Login = () => {
     </Box>
   );
 };
-export default Login;
+export default LoginPage;

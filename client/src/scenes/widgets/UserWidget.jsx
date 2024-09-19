@@ -47,6 +47,7 @@ const UserWidget = ({ userId, picturePath }) => {
     impressions,
     friends,
   } = user;
+  console.log(user);
 
   return (
     <WidgetWrapper>
@@ -72,7 +73,7 @@ const UserWidget = ({ userId, picturePath }) => {
             >
               {firstName} {lastName}
             </Typography>
-            <Typography color={medium}>{friends} friends</Typography>
+            <Typography color={medium}>{friends.length} friends</Typography>
           </Box>
         </FlexBetween>
         <ManageAccountsOutlined />
@@ -101,7 +102,7 @@ const UserWidget = ({ userId, picturePath }) => {
           <Typography color={main} fontWeight="500">
             {viewedProfile}
           </Typography>
-        </FlexBetween>  
+        </FlexBetween>
         <FlexBetween>
           <Typography color={medium}>Impressions of your post</Typography>
           <Typography color={main} fontWeight="500">

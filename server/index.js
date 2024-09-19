@@ -58,6 +58,7 @@ mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    console.log("data base is connected");
 
     /* ADD DATA ONE TIME */
     // User.insertMany(users);

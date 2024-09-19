@@ -21,11 +21,14 @@ const FriendListWidget = ({ userId }) => {
     );
     const data = await response.json();
     dispatch(setFriends({ friends: data }));
+    
   };
 
+  
+
   useEffect(() => {
-    getFriends();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    getFriends(); 
+  }, [userId, token]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <WidgetWrapper>
@@ -38,19 +41,15 @@ const FriendListWidget = ({ userId }) => {
         Friend List
       </Typography>
       <Box display="flex" flexDirection="column" gap="1.5rem">
-        {Array.isArray(friends) && friends.length > 0 ? (
-          friends.map((friend) => (
-            <Friend
-              key={friend._id}
-              friendId={friend._id}
-              name={`${friend.firstName} ${friend.lastName}`}
-              subtitle={friend.occupation}
-              userPicturePath={friend.picturePath}
-            />
-          ))
-        ) : (
-          <Typography>No friends found.</Typography>
-        )}
+        {friends.map((friend) => (
+          <Friend
+            key={friend._id}
+            friendId={friend._id}
+            name={`${friend.firstName} ${friend.lastName}`}
+            subtitle={friend.occupation}
+            userPicturePath={friend.picturePath}
+          />
+        ))}
       </Box>
     </WidgetWrapper>
   );
